@@ -13,19 +13,19 @@
 13 *     }
 14 * }
 15 */
-16class Solution {
-17    TreeNode prev = null;
-18    boolean flag=true;
-19    public void inorder(TreeNode root){
-20        if(root==null) return;
-21        inorder(root.left);
-22        if(prev==null) prev=root;
-23        else if(prev.val>=root.val) flag=false;
-24        else prev=root;
-25        inorder(root.right);
-26    }
-27    public boolean isValidBST(TreeNode root) {
-28        inorder(root);
-29        return flag;
-30    }
-31}
+16
+17class Solution {
+18    public boolean isValidBST(TreeNode root) {
+19        return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+20    }
+21
+22    private boolean helper(TreeNode node, long min, long max) {
+23        if (node == null) return true;
+24
+25        if (node.val <= min || node.val >= max) return false;
+26
+27        return helper(node.left, min, node.val) &&
+28               helper(node.right, node.val, max);
+29    }
+30}
+31
