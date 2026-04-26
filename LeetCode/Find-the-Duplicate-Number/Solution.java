@@ -1,24 +1,13 @@
 1class Solution {
-2    public static int findDuplicate(int[] nums) {
-3        int len = nums.length;
-4        int low = 1;
-5        int high = len - 1;
-6        while (low < high) {
-7            int mid = low + (high - low) / 2;
-8            int cnt = 0;
-9            for (int i = 0; i < len; i++) {
-10                if (nums[i] <= mid) {
-11                    cnt++;
-12                }
-13            }
-14
-15            if (cnt <= mid) {
-16                low = mid + 1;
-17            } else {
-18                high = mid;
-19            }
-20        }
-21
-22        return low;
-23    }
-24}
+2    public int findDuplicate(int[] nums) {
+3        int n = nums.length;
+4        boolean [] vis = new boolean[n+1];
+5
+6        for(int i =0;i<n;i++){
+7            if(!vis[nums[i]]) vis[nums[i]] = true;
+8            else return nums[i];
+9        }
+10
+11        return -1;
+12    }
+13}
