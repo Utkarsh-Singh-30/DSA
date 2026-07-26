@@ -1,18 +1,19 @@
-1class Solution {
-2    public boolean isValid(String s) {
-3       Stack<Character> st = new Stack<>();
-4        for(int i =0;i<s.length();i++){
-5            if(s.charAt(i)=='(' || s.charAt(i)=='{' ||s.charAt(i)=='[')
-6                st.push(s.charAt(i));
-7            else{
-8                if(st.isEmpty()) return false;
-9                else if(s.charAt(i)==')'&& st.peek()=='(') st.pop();
-10                else if(s.charAt(i)=='}'&& st.peek()=='{') st.pop();
-11                else if(s.charAt(i)==']'&& st.peek()=='[') st.pop();
-12                else return false;
-13            }
-14        }
-15        if(st.isEmpty()) return true;
-16        else return false;
-17    }
-18}
+1class Solution:
+2    def isValid(self, s: str) -> bool:
+3        n= len(s)
+4        st= []
+5
+6        for i in range(n):
+7            if s[i] in {'(','{','['}:
+8                st.append(s[i])
+9
+10            else:
+11                if len(st) == 0: return False 
+12                elif(s[i]==')' and st[len(st)-1])=='(': st.pop()
+13                elif(s[i]=='}' and st[len(st)-1])=='{': st.pop()
+14                elif(s[i]==']' and st[len(st)-1])=='[': st.pop()
+15                else: return False
+16
+17        if len(st) == 0: return True
+18        else: return False
+19
