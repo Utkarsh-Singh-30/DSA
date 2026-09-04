@@ -6,7 +6,7 @@ Return the number of combinations that make up that amount. If that amount of mo
 
 You may assume that you have an infinite number of each kind of coin.
 
-The answer is guaranteed to fit into a signed 32-bit integer.
+The final answer is guaranteed to fit into a signed 32-bit integer.
 
  
 
