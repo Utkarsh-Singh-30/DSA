@@ -9,18 +9,12 @@
 9 */
 10class Solution {
 11    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-12        if(root==p || root==q) return root;
-13        boolean left=contains(root.left,p);
-14        boolean right=contains(root.right,q);
-15        if((left && right)|| (!left && !right)) return root;
-16        if(left && !right) return lowestCommonAncestor(root.left, p,q);
-17        if(!left && right) return lowestCommonAncestor(root.right, p,q);
-18        return null;
+12        if(root==null) return root;
+13        if(root==p || root==q) return root;
+14        TreeNode left = lowestCommonAncestor(root.left,p,q);
+15        TreeNode right = lowestCommonAncestor(root.right,p,q);
+16        if(left!= null && right!=null)return root;
+17        if(left!=null)return left;
+18        else return right;
 19    }
-20
-21    public boolean contains(TreeNode root, TreeNode node){
-22        if(root==null) return false;
-23        if(root==node) return true;
-24        return contains(root.left,node) || contains(root.right,node);
-25    }
-26}
+20}
